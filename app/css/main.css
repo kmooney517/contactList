@@ -59,7 +59,7 @@
     left: -1.85714em; }
 
 .fa-border {
-  padding: 0.2em 0.25em 0.15em;
+  padding: .2em .25em .15em;
   border: solid 0.08em #eee;
   border-radius: .1em; }
 
@@ -2020,5 +2020,31 @@
 
 body {
   background: #e2ebf3; }
+
+* {
+  list-style: none; }
+
+.app {
+  border: 1px solid black;
+  width: 50%;
+  margin: 5% 25%; }
+  .app h2 {
+    text-align: center; }
+  .app ul {
+    padding-left: 5px; }
+    .app ul span {
+      color: green;
+      font-style: bold;
+      width: 50%; }
+  .app li {
+    margin-bottom: 10px;
+    padding-top: 5px;
+    border-top: 1px dotted black;
+    font-size: 20px; }
+  .app i {
+    padding-right: 20px;
+    padding-left: 20px; }
+  .app .contactName {
+    color: black; }
 
 /*# sourceMappingURL=main.css.map */
