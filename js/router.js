@@ -12,7 +12,6 @@ let Router = Backbone.Router.extend({
 	routes: {
 		''               : 'home',
 		'singleView/:id' : 'showSingleContact',
-		'newContact'     : 'makeNewContact'
 
 	},
 
@@ -20,6 +19,7 @@ let Router = Backbone.Router.extend({
 		this.$el = x;
 
 		this.contacts = new ContactsCollection();
+		this.$btn = ('.backBtn');
 
 		let router = this;
 
@@ -40,6 +40,7 @@ let Router = Backbone.Router.extend({
 	showSingleContact: function(contactId) {
 		
 		let contact = this.contacts.get(contactId);
+		let router = this;
 
 		if (contact) {
 			this.$el.html(singleTemplate(contact.toJSON()) );
@@ -50,10 +51,11 @@ let Router = Backbone.Router.extend({
 				router.$el.html( singleTemplate(contact.toJSON()) );
 			});
 		}
-	},
 
-	makeNewContact: function() {
-		console.log('new contact')
+		this.back = $('.backBtn');
+		this.back.on('click', function (){
+			router.navigate('', {trigger: true});
+		});
 	},
 
 

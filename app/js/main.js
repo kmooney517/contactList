@@ -138,8 +138,7 @@ var Router = _backbone2['default'].Router.extend({
 
 	routes: {
 		'': 'home',
-		'singleView/:id': 'showSingleContact',
-		'newContact': 'makeNewContact'
+		'singleView/:id': 'showSingleContact'
 
 	},
 
@@ -147,6 +146,7 @@ var Router = _backbone2['default'].Router.extend({
 		this.$el = x;
 
 		this.contacts = new _contacts_collection2['default']();
+		this.$btn = '.backBtn';
 
 		var router = this;
 
@@ -168,6 +168,7 @@ var Router = _backbone2['default'].Router.extend({
 		var _this = this;
 
 		var contact = this.contacts.get(contactId);
+		var router = this;
 
 		if (contact) {
 			this.$el.html((0, _viewsSingleview2['default'])(contact.toJSON()));
@@ -180,10 +181,11 @@ var Router = _backbone2['default'].Router.extend({
 				});
 			})();
 		}
-	},
 
-	makeNewContact: function makeNewContact() {
-		console.log('new contact');
+		this.back = (0, _jQuery2['default'])('.backBtn');
+		this.back.on('click', function () {
+			router.navigate('', { trigger: true });
+		});
 	},
 
 	start: function start() {
@@ -259,7 +261,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 function singleTemplate(data) {
-	return "\n\t\t<h2> Contact List </h2>\n\t\t<ul>\n\t\t\t<li> <i class=\"fa fa-user \"></i> <span>Name:</span> " + data.Name + "</li>\n\t\t\t<li> <i class=\"fa fa-envelope \"></i><span>Email:</span> " + data.Email + "</li>\n\t\t\t<li> <i class=\"fa fa-phone-square \"></i><span>Phone Number: </span>" + data.PhoneNumber + "</li>\n\t\t\t<li> <i class=\"fa fa-globe \"></i><span>Location:</span> " + data.Location + "</li>\n\t\t</ul>\n\t\t";
+	return "\n\t\t<h2> Contact List </h2>\n\t\t<button class='backBtn'><i class='fa fa-long-arrow-left'></i></button>\n\t\t<ul>\n\t\t\t<li> <i class=\"fa fa-user \"></i> <span>Name:</span> " + data.Name + "</li>\n\t\t\t<li> <i class=\"fa fa-envelope \"></i><span>Email:</span> " + data.Email + "</li>\n\t\t\t<li> <i class=\"fa fa-phone-square \"></i><span>Phone Number: </span>" + data.PhoneNumber + "</li>\n\t\t\t<li> <i class=\"fa fa-globe \"></i><span>Location:</span> " + data.Location + "</li>\n\t\t</ul>\n\n\t\t";
 };
 
 exports["default"] = singleTemplate;

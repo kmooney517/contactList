@@ -19,12 +19,14 @@
 function singleTemplate(data) {	
 	return `
 		<h2> Contact List </h2>
+		<button class='backBtn'><i class='fa fa-long-arrow-left'></i></button>
 		<ul>
 			<li> <i class="fa fa-user "></i> <span>Name:</span> ${ data.Name }</li>
 			<li> <i class="fa fa-envelope "></i><span>Email:</span> ${ data.Email }</li>
 			<li> <i class="fa fa-phone-square "></i><span>Phone Number: </span>${ data.PhoneNumber }</li>
 			<li> <i class="fa fa-globe "></i><span>Location:</span> ${ data.Location }</li>
 		</ul>
+
 		`
 };
 
